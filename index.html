@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sparrowhawk Electrical, St Leonards and Ringwood (example website)</title>
+<meta name="description" content="Example website for a made-up electrical firm in St Leonards and Ringwood, Dorset. Built by Tom Fisher to show local trades what they could have.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1f3447">
+<link rel="icon" href="assets/logo/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,600..900&family=Lexend:wght@400..800&display=swap">
+<style>
+:root{
+  --slate:#1f3447;--slate-rule:#4a6378;--on-slate:#fff;--on-slate-soft:#d4dfe8;
+  --acc:#ff9a5c;--ruf:#c4501b;--eye:#f2b705;--coal:#14212d;
+  --paper:#f4f7f9;--chart:#e6edf2;--ink:#14212d;--muted:#425261;--rule:#14212d;--leader:#76889a;--link:#0b5f9b;--head:#1f3447;
+  --band:#c4501b;--on-band:#fff;--band-btn:#1f3447;--band-btn-ink:#fff;--band-field:#fff;--band-field-ink:#14212d;--band-mark:#1f3447;--band-mark-ink:#fff;
+  --sel-bg:#c4501b;--sel-ink:#fff;
+  --m-land:#eef3f6;--m-wood:#cde0d3;--m-heath:#e8e1d2;--m-cont:#a8825a;--m-grid:#bcd5e6;--m-tree:#4a7d68;--m-water:#2f86c9;--m-road:#b8b2a6;--m-a:#8a4a22;--m-a-case:#52280f;--m-wname:#0b5f9b;--m-area:#215843;--m-fold:rgba(20,33,45,.26);--m-fold-l:rgba(255,255,255,.75);--m-panel:rgba(20,33,45,.035);--m-blend:multiply;--m-pw:9;--m-po:.85;--pin:#1f3447;--pin-ring:#1f3447;--pin-label:#14212d;--halo:#eef3f6;
+  --display:"Archivo","Segoe UI",system-ui,sans-serif;
+  --body:"Lexend","Segoe UI",system-ui,sans-serif;
+  --gutter:max(clamp(16px,3.6vw,48px),calc((100vw - 96rem)/2 + 48px));
+  --bars:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='12'%3E%3Cpath d='M0 0h34v12H0zM52 0h12v12H52zM82 0h46v12H82zM144 0h10v12h-10zM170 0h22v12h-22z'/%3E%3C/svg%3E");
+  --vbars:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='140'%3E%3Cpath d='M0 0h16v30H0zM0 44h16v10H0zM0 68h16v34H0zM0 116h16v8H0z'/%3E%3C/svg%3E");
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0b141c;--chart:#12202c;--ink:#e8eef3;--muted:#a9bac8;--rule:#e8eef3;--leader:#6f8294;--link:#86cdf5;--head:#fff;
+  --band:#243b50;--on-band:#fff;--band-btn:#ff9a5c;--band-btn-ink:#14212d;--band-field:#0b141c;--band-field-ink:#e8eef3;--band-mark:#ff9a5c;--band-mark-ink:#14212d;
+  --sel-bg:#ff9a5c;--sel-ink:#14212d;
+  --m-land:#14202b;--m-wood:#1b3a33;--m-heath:#2b2d25;--m-cont:#8a6a45;--m-grid:#1f3d52;--m-tree:#6fb59a;--m-water:#4aa9e2;--m-road:#6b6559;--m-a:#b86a3c;--m-a-case:#3a2212;--m-wname:#86cdf5;--m-area:#9fd4bd;--m-fold:rgba(0,0,0,.6);--m-fold-l:rgba(255,255,255,.16);--m-panel:rgba(255,255,255,.028);--m-blend:normal;--m-pw:6;--m-po:.95;--pin:#ff9a5c;--pin-ring:#ff9a5c;--pin-label:#e8eef3;--halo:#14202b;
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --paper:#0b141c;--chart:#12202c;--ink:#e8eef3;--muted:#a9bac8;--rule:#e8eef3;--leader:#6f8294;--link:#86cdf5;--head:#fff;
+  --band:#243b50;--on-band:#fff;--band-btn:#ff9a5c;--band-btn-ink:#14212d;--band-field:#0b141c;--band-field-ink:#e8eef3;--band-mark:#ff9a5c;--band-mark-ink:#14212d;
+  --sel-bg:#ff9a5c;--sel-ink:#14212d;
+  --m-land:#14202b;--m-wood:#1b3a33;--m-heath:#2b2d25;--m-cont:#8a6a45;--m-grid:#1f3d52;--m-tree:#6fb59a;--m-water:#4aa9e2;--m-road:#6b6559;--m-a:#b86a3c;--m-a-case:#3a2212;--m-wname:#86cdf5;--m-area:#9fd4bd;--m-fold:rgba(0,0,0,.6);--m-fold-l:rgba(255,255,255,.16);--m-panel:rgba(255,255,255,.028);--m-blend:normal;--m-pw:6;--m-po:.95;--pin:#ff9a5c;--pin-ring:#ff9a5c;--pin-label:#e8eef3;--halo:#14202b;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scrollbar-color:var(--slate) var(--paper);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.125rem/1.55 var(--body);caret-color:var(--ruf);overflow-x:clip}
+::selection{background:var(--eye);color:var(--coal)}
+img,svg{display:block;max-width:100%}
+p,h1,h2,h3,dl,dd,figure,blockquote,ul{margin:0;padding:0}
+ul{list-style:none}
+h1,h2{font-family:var(--display);font-weight:800;text-transform:uppercase;line-height:1.02;letter-spacing:0;text-wrap:balance;font-stretch:100%}
+h2{font-size:clamp(2rem,4.3vw,3.4rem);color:var(--head)}
+a{color:var(--link);text-decoration-thickness:2px;text-underline-offset:.2em}
+a:hover{text-decoration-thickness:4px}
+:focus-visible{outline:3px solid var(--eye);outline-offset:2px;box-shadow:0 0 0 2px var(--coal),0 0 0 8px var(--coal)}
+.wrap{padding-inline:max(var(--gutter),env(safe-area-inset-left,0px)) max(var(--gutter),env(safe-area-inset-right,0px))}
+.lede{color:var(--muted);max-width:60ch}
+.bars{height:12px;background:var(--ruf);-webkit-mask:var(--bars) repeat-x left/200px 12px;mask:var(--bars) repeat-x left/200px 12px}
+.bars.on-slate{background:var(--acc)}
+.barwrap{background:var(--slate)}
+.join{background:var(--paper)}
+
+.banner{background:var(--coal);color:#fff;font-size:.8125rem;line-height:1.35}
+@media (min-width:761px){.banner{font-size:.95rem}}
+.banner .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:0 1.5rem;padding-block:.35rem}
+.banner a{color:var(--acc);font-weight:700}
+.dsk{display:none}
+@media (max-width:760px){.banner .wrap{display:block}.banner a{margin-left:.25em}}
+@media (min-width:761px){.dsk{display:inline}}
+
+.top{background:var(--slate);color:var(--on-slate)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.55rem}
+@media (min-width:900px){.top .wrap{padding-block:.8rem}}
+.brand{display:flex;align-items:center;min-height:44px;width:clamp(250px,26vw,340px)}
+.brand img{width:100%;height:auto}
+.nav{display:none;gap:1.75rem;align-items:center}
+.nav a{color:var(--on-slate);font-weight:600;text-decoration:none;font-size:1.0625rem;padding-block:.4rem}
+.nav a:hover{text-decoration:underline;text-decoration-color:var(--acc);text-decoration-thickness:3px}
+@media (min-width:900px){.nav{display:flex}}
+
+.hero{background:var(--slate);color:var(--on-slate);display:grid}
+.hero-copy{padding:1rem var(--gutter) 1.4rem;display:flex;flex-direction:column;gap:.9rem;min-width:0}
+h1{font-size:clamp(2.2rem,9.6vw,4.6rem);line-height:1.02;color:#fff}
+h1 mark{background:none;color:var(--acc);position:relative;white-space:nowrap}
+h1 mark::after{content:"";position:absolute;left:0;right:0;bottom:-.1em;height:5px;background:var(--acc)}
+.num{display:block;font-family:var(--display);font-weight:800;font-size:min(11.2vw,4.4rem);line-height:1;color:var(--acc);text-decoration:none;font-variant-numeric:tabular-nums;white-space:nowrap;width:max-content;max-width:100%}
+.num:hover{color:#fff}
+.trust{display:grid;gap:.15rem;color:var(--on-slate-soft);font-size:1rem;line-height:1.4;margin-top:.3rem}
+.trust li{position:relative;padding-left:1.4rem}
+.trust li::before{content:"";position:absolute;left:0;top:.3em;width:11px;height:16px;border:2px solid var(--on-slate-soft)}
+.trust li::after{content:"";position:absolute;left:4px;top:calc(.3em + 3px);width:7px;height:5px;background:var(--acc)}
+.where{color:var(--on-slate-soft);font-size:1.0625rem;line-height:1.4;max-width:30rem;margin-top:-.2rem}
+.hero-copy .quote-link{color:#fff;font-weight:700;display:inline-block;padding-block:.65rem}
+.hero-photo{position:relative;order:-1;margin:0;height:min(30svh,270px);background:#2a4459;overflow:hidden}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.hero-photo figcaption{position:absolute;left:0;bottom:0;background:var(--coal);color:#fff;font-size:.8125rem;line-height:1.3;padding:.25rem .55rem}
+@media (min-width:900px){
+  .hero{grid-template-columns:minmax(0,46fr) minmax(0,54fr);min-height:min(calc(100svh - 150px),640px)}
+  .hero-copy{padding:clamp(1.5rem,3.5vw,3rem) var(--gutter) 2rem clamp(2rem,4vw,3.5rem);justify-content:center;gap:1.4rem}
+  h1{font-size:clamp(2.6rem,4.6vw,4.2rem)}
+  .num{font-size:clamp(3.2rem,5.2vw,4.6rem)}
+  .hero-photo{order:-1;height:auto}
+  .hero-photo img{position:absolute;inset:0;object-position:48% 35%}
+  .hero-photo::after{content:"";position:absolute;top:0;bottom:0;right:0;width:16px;background:var(--acc);-webkit-mask:var(--vbars) repeat-y top/16px 140px;mask:var(--vbars) repeat-y top/16px 140px}
+}
+
+.emerg{background:var(--acc);color:var(--coal)}
+.emerg .wrap{display:grid;gap:.2rem .9rem;padding-block:.9rem}
+.emerg b{font:800 clamp(1.5rem,2.6vw,2.2rem)/1.05 var(--display);text-transform:uppercase}
+.emerg p{max-width:62ch;font-size:1.0625rem;line-height:1.4}
+.emerg a{font:800 clamp(1.7rem,2.8vw,2.3rem)/1 var(--display);color:var(--coal);text-decoration:none;white-space:nowrap;font-variant-numeric:tabular-nums}
+.emerg a:hover{text-decoration:underline}
+@media (min-width:900px){.emerg .wrap{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr) auto;align-items:center;gap:2rem}}
+
+.patch{padding-block:clamp(2.25rem,6vw,5rem);display:grid;gap:1.25rem}
+.patch-head{display:flex;flex-direction:column;gap:.7rem;padding-inline:var(--gutter)}
+.map{position:relative;aspect-ratio:520/457;border-block:3px solid var(--rule);overflow:hidden;background:var(--m-land)}
+.mapwrap{position:relative;min-width:0}
+.note{color:var(--ink);font-size:.8125rem;line-height:1.3;padding:.35rem var(--gutter) 0;display:flex;flex-wrap:wrap;gap:0 .8rem;margin:0}
+.lg{display:inline-flex;align-items:center;gap:.25rem;white-space:nowrap}
+.lg i{width:7px;height:7px;border-radius:50%;background:var(--pin-ring)}
+.lg i.r{width:10px;height:10px;border-radius:0}
+.sk{color:var(--muted)}
+@media (min-width:900px){.note{position:absolute;right:3px;bottom:3px;background:var(--paper);padding:.2rem .45rem;border:solid var(--rule);border-width:2px 0 0 2px}}
+.pin{position:absolute;min-height:44px;display:flex;align-items:center;gap:.1rem;background:none;border:0;padding:0;color:var(--pin-label);font:700 .875rem/1.1 var(--body);cursor:pointer;transform:translate(-22px,-22px)}
+.pin.lft{flex-direction:row-reverse;transform:translate(calc(-100% + 22px),-22px)}
+.pin i{flex:none;width:44px;height:44px;display:grid;place-items:center;margin-inline:0}
+.pin i::before{content:"";width:15px;height:15px;background:var(--pin);border:3px solid var(--halo);outline:2px solid var(--pin);transition:transform .15s ease-out}
+.pin span{margin-inline:-14px;padding:.08em .32em;background:color-mix(in srgb,var(--halo) 84%,transparent);white-space:nowrap}
+.pin:hover i::before{transform:scale(1.2)}
+.pin[aria-pressed="true"] span{background:var(--sel-bg);color:var(--sel-ink)}
+.pin[aria-pressed="true"] i::before{background:var(--sel-bg);outline-color:var(--pin-ring);border-color:var(--halo);transform:scale(1.25)}
+.pin.job i::before{width:9px;height:9px;border-radius:50%;border:0;outline:2px solid var(--halo);background:var(--pin)}
+.pin.job[aria-pressed="true"] i::before{width:14px;height:14px;background:var(--sel-bg);outline:2px solid var(--pin-ring)}
+.pin.out{flex-direction:column-reverse;gap:0;transform:translate(-50%,calc(-100% + 22px));text-align:center;font-weight:700}
+.pin.out i::before{background:transparent;border-color:transparent;border-radius:50%;outline-offset:-2px}
+.pin.out span{margin:0 0 -12px;white-space:normal;width:5.6em;line-height:1.15}
+.places{padding-inline:var(--gutter);min-width:0}
+.place{border-top:3px solid var(--rule);padding-top:.8rem;display:grid;gap:.6rem}
+.place h3{font:800 1.9rem/1 var(--display);text-transform:uppercase;color:var(--head)}
+.place blockquote,.place>p:not(.who){font-size:1.25rem;line-height:1.35;max-width:32em}
+@media (min-width:1200px){.place blockquote,.place>p:not(.who){font-size:1.4rem}}
+.who{display:flex;flex-wrap:wrap;gap:.2rem .7rem;align-items:center;color:var(--muted);font-size:1rem}
+.who b{color:var(--ink)}
+.tag{display:inline-block;background:var(--coal);color:#fff;border:1px solid var(--rule);font-size:.8125rem;font-weight:700;padding:.1rem .45rem}
+.stars{width:92px;height:17px;color:var(--ruf)}
+:root[data-theme="dark"] .stars{color:var(--acc)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .stars{color:var(--acc)}}
+@media (min-width:900px){
+  .patch{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);padding-inline:var(--gutter);column-gap:clamp(2rem,4vw,3.5rem);row-gap:1.5rem;align-items:start;grid-template-rows:auto 1fr}
+  .mapwrap{grid-row:1/3}
+  .map{border:3px solid var(--rule)}
+  .patch-head,.places{padding-inline:0}
+  .pin{font-size:1rem}
+}
+.m-patch{stroke-dasharray:100;stroke-dashoffset:0}
+.draw .m-patch{animation:draw 1.8s cubic-bezier(.16,1,.3,1) both}
+@keyframes draw{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
+
+.prices{background:var(--chart)}
+.prices figure{position:relative;height:clamp(190px,34vw,380px);overflow:hidden;background:var(--slate)}
+.prices figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:78% 45%}
+.prices figure figcaption{position:absolute;left:0;bottom:0;background:var(--coal);color:#fff;font-size:.8125rem;line-height:1.3;padding:.25rem .55rem}
+.key{display:grid;gap:1.25rem;padding-block:clamp(2.25rem,6vw,4.75rem)}
+.key-head{display:flex;flex-direction:column;gap:.7rem;min-width:0}
+.key ul{border-top:3px solid var(--rule)}
+.key li{padding:.7rem 0 .8rem;border-bottom:2px dotted var(--leader)}
+.line{display:flex;flex-wrap:wrap;align-items:baseline;gap:.15rem .5rem}
+@media (max-width:899px){.line h3{flex:1 1 100%}.line i{min-width:1rem}}
+@media (min-width:900px){.line{flex-wrap:nowrap}}
+.line h3{margin:0;font-size:1.1875rem;font-weight:700;line-height:1.25;position:relative;padding-left:1.6rem;color:var(--ink)}
+.line h3::before{content:"";position:absolute;left:0;top:.18em;width:12px;height:19px;border:2px solid var(--ink)}
+.line h3::after{content:"";position:absolute;left:4px;top:calc(.18em + 3px);width:8px;height:6px;background:var(--ruf)}
+:root[data-theme="dark"] .line h3::after{background:var(--acc)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .line h3::after{background:var(--acc)}}
+.line i{flex:1;min-width:1rem;border-bottom:2px dotted var(--leader);transform:translateY(-.25em)}
+.line span{white-space:nowrap;color:var(--muted);font-size:1rem}
+.line b{margin-left:.3rem;font:800 clamp(1.9rem,3vw,2.6rem)/1 var(--display);color:var(--head);font-variant-numeric:tabular-nums}
+.key li p{color:var(--muted);font-size:1rem;line-height:1.4;max-width:56ch;padding-left:1.6rem;margin-top:.15rem}
+.key small{font-size:.9375rem;color:var(--muted)}
+.pnote{margin-top:-.4rem}
+@media (min-width:900px){.pnote{grid-column:1/-1;margin-top:-1.2rem}}
+@media (min-width:900px){.key{gap:2rem}.key-head{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);column-gap:clamp(2.5rem,6vw,5rem);row-gap:.7rem;align-items:end}.key-head h2{grid-row:1/3;font-size:clamp(2.6rem,5.2vw,4.4rem)}.key ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(2rem,5vw,4rem);border-top:0}.key li:nth-child(-n+2){border-top:3px solid var(--rule)}}
+
+.work{padding-block:clamp(2.25rem,6vw,5rem);display:grid;gap:1.25rem}
+.ba{position:relative;aspect-ratio:4/3;overflow:hidden;background:#333;user-select:none;touch-action:pan-y;border-block:3px solid var(--rule)}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba .after{clip-path:inset(0 0 0 var(--pos,50%))}
+.ba .bar{position:absolute;top:0;bottom:0;left:var(--pos,50%);width:6px;margin-left:-3px;background:var(--acc);pointer-events:none}
+.ba .grip{position:absolute;top:50%;left:50%;width:52px;height:52px;margin:-26px 0 0 -26px;background:var(--acc);color:var(--slate);display:grid;place-items:center;border:3px solid var(--coal)}
+.ba .grip svg{width:28px;height:28px}
+.ba .lab{position:absolute;top:0;background:var(--coal);color:#fff;font-weight:700;font-size:.9375rem;padding:.2rem .6rem;pointer-events:none}
+.ba .lb{left:0}.ba .la{right:0}
+.ba .cap{position:absolute;left:0;bottom:0;background:var(--coal);color:#fff;font-size:.8125rem;line-height:1.3;padding:.25rem .55rem;pointer-events:none}
+.ba input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
+.ba input:focus-visible~.bar .grip{outline:3px solid #fff;outline-offset:2px;box-shadow:0 0 0 2px var(--coal),0 0 0 8px var(--coal)}
+.work-copy{padding-inline:var(--gutter);display:flex;flex-direction:column;gap:.8rem;min-width:0}
+.facts{margin-top:.2rem}
+.facts div{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding-block:.55rem;border-bottom:2px dotted var(--leader)}
+.facts div:first-child{border-top:3px solid var(--rule)}
+.facts dt{font-weight:700}
+@media (max-width:599px){.facts div{flex-direction:column;gap:0}.facts dd{text-align:left}}
+.facts dd{color:var(--muted);text-align:right}
+@media (min-width:900px){
+  .work{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);padding-inline:var(--gutter);column-gap:clamp(2rem,4vw,3.5rem);align-items:center}
+  .ba{border:3px solid var(--rule)}
+  .work-copy{padding-inline:0}
+}
+
+.band{background:var(--band);color:var(--on-band)}
+.band .wrap{display:grid;gap:1.5rem;padding-block:clamp(2.25rem,6vw,4.75rem)}
+.band h2{color:var(--on-band);font-size:clamp(2.2rem,5vw,3.9rem)}
+.band .pl{margin-top:.8rem;max-width:44ch;line-height:1.45}
+form{display:flex;flex-direction:column;gap:.95rem;min-width:0}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+legend,label.f{display:block;font-weight:700;padding:0;margin-bottom:.35rem}
+.opts{display:flex;flex-wrap:wrap;gap:.45rem}
+.opts input{position:absolute;opacity:0;width:1px;height:1px}
+.opts label{min-height:44px;display:flex;align-items:center;padding:.3rem .8rem;border:2px solid currentColor;font-weight:700;cursor:pointer}
+.opts label:hover{background:color-mix(in srgb,currentColor 14%,transparent)}
+.opts input:checked+label{background:var(--band-mark);color:var(--band-mark-ink);border-color:var(--band-mark)}
+.opts input:focus-visible+label{outline:3px solid var(--eye);outline-offset:2px;box-shadow:0 0 0 2px var(--coal),0 0 0 8px var(--coal)}
+input.t,textarea{width:100%;font:inherit;color:var(--band-field-ink);background:var(--band-field);border:2px solid var(--on-band);border-radius:0;padding:.65rem .75rem;caret-color:currentColor}
+textarea{min-height:6.25rem;resize:vertical}
+::placeholder{color:#55646f;opacity:1}
+:root[data-theme="dark"] ::placeholder{color:#a3b4c1}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) ::placeholder{color:#a3b4c1}}
+textarea[aria-invalid="true"]{border-width:4px}
+.send{font:700 1.1875rem/1.3 var(--body);background:var(--band-btn);color:var(--band-btn-ink);border:0;min-height:56px;padding:.8rem 1rem;cursor:pointer}
+.send:hover{text-decoration:underline;text-underline-offset:.2em}
+.composed{font-size:1rem;line-height:1.4}
+.composed:empty{display:none}
+.composed q{display:block;quotes:none;background:var(--band-field);color:var(--band-field-ink);border:2px solid var(--on-band);padding:.55rem .7rem;margin-top:.35rem}
+@media (min-width:900px){.band .wrap{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);column-gap:clamp(2.5rem,6vw,5rem);align-items:start}}
+
+.ask{padding-block:clamp(2.25rem,6vw,5rem);display:grid;gap:1.25rem}
+.ask details{border-bottom:2px dotted var(--leader)}
+.ask details:first-child{border-top:3px solid var(--rule)}
+.ask summary{min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:1rem;font-weight:700;font-size:1.1875rem;line-height:1.3;padding-block:.65rem;cursor:pointer;list-style:none}
+.ask summary::-webkit-details-marker{display:none}
+.ask summary::after{content:"";flex:none;width:18px;height:18px;background:linear-gradient(currentColor,currentColor) center/100% 3px no-repeat,linear-gradient(currentColor,currentColor) center/3px 100% no-repeat}
+.ask details[open] summary::after{background:linear-gradient(currentColor,currentColor) center/100% 3px no-repeat}
+.ask details p{padding-bottom:1rem;color:var(--muted);max-width:60ch}
+@media (min-width:900px){.ask{grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);column-gap:clamp(2.5rem,6vw,5rem)}}
+
+.close{background:var(--coal);color:#fff}
+.close .wrap{display:grid;gap:1.1rem;padding-block:clamp(2.5rem,6vw,4.75rem)}
+.close h2{color:#fff;font-size:clamp(2.2rem,5vw,3.9rem)}
+.close p{color:#d4dfe8;max-width:52ch}
+.close .price{font:800 clamp(1.7rem,3vw,2.5rem)/1.1 var(--display);text-transform:uppercase;color:#fff;max-width:none}
+.close a{color:#fff;font-weight:700}
+.reach{display:flex;flex-direction:column;gap:.3rem;font-size:1.1875rem}
+@media (min-width:900px){.close .wrap{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);column-gap:clamp(2.5rem,6vw,5rem);align-items:end}}
+footer{background:var(--coal);color:#bccbd7;font-size:.9375rem;border-top:1px solid #34495b}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.25rem 1.5rem;padding-block:1rem calc(5.25rem + env(safe-area-inset-bottom,0px))}
+@media (min-width:900px){footer .wrap{padding-bottom:1rem}}
+
+.callbar{position:fixed;inset-inline:0;bottom:0;z-index:20;display:flex;gap:6px;background:var(--coal);padding:6px max(6px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(6px,env(safe-area-inset-left,0px))}
+.callbar a{flex:1;min-height:52px;display:grid;place-items:center;font-weight:800;font-size:1.1875rem;text-decoration:none;color:var(--coal);background:var(--acc)}
+.callbar a+a{background:#fff}
+@media (min-width:900px){.callbar{display:none}}
+.demo-note{position:fixed;left:50%;bottom:calc(76px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:30;width:min(30rem,calc(100vw - 24px));background:var(--coal);color:#fff;border:2px solid var(--acc);padding:.55rem .8rem;font-size:1rem;line-height:1.35}
+.demo-note:empty{display:none}
+@media (min-width:900px){.demo-note{bottom:24px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.draw .m-patch{animation:none}.pin i::before{transition:none}}
+.sheet{display:block;width:100%;height:100%}.m-land{fill:var(--m-land)}.m-wood{fill:var(--m-wood)}.m-heath{fill:var(--m-heath)}.m-cont{fill:none;stroke:var(--m-cont);stroke-width:1.1;opacity:.55}.m-grid path{stroke:var(--m-grid);stroke-width:1;fill:none}.m-tree use{fill:var(--m-tree)}.m-tuft use{fill:none;stroke:var(--m-tree);stroke-width:1.2;stroke-linecap:round}.m-water{fill:none;stroke:var(--m-water);stroke-width:4;stroke-linecap:round}.m-stour{stroke-width:8}.m-thin{stroke-width:2.5}.m-road{fill:none;stroke:var(--m-road);stroke-width:3;stroke-linecap:round}.m-a-case{fill:none;stroke:var(--m-a-case);stroke-width:9;stroke-linecap:round}.m-a{fill:none;stroke:var(--m-a);stroke-width:6;stroke-linecap:round}.m-patch{fill:none;stroke:var(--ruf);stroke-width:var(--m-pw,15);stroke-linejoin:round;opacity:var(--m-po,.8);mix-blend-mode:var(--m-blend)}:root[data-theme="dark"] .m-patch{stroke:var(--acc)}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .m-patch{stroke:var(--acc)}}.m-wname{font:500 20px var(--body);fill:var(--m-wname);letter-spacing:.04em}.m-small{font-size:16px}.m-area{font:500 17px var(--body);fill:var(--m-area);letter-spacing:.06em;text-anchor:middle}.m-shield{fill:var(--m-a);stroke:var(--m-a-case);stroke-width:1.5}.m-shield-t{font:700 18px var(--body);fill:#fff;text-anchor:middle}.m-fold{fill:none;stroke:var(--m-fold);stroke-width:2}.m-fold-l{fill:none;stroke:var(--m-fold-l);stroke-width:2}.m-panel{fill:var(--m-panel)}.m-tick{fill:none;stroke:var(--rule);stroke-width:2}.m-mar{font:700 20px var(--body);fill:var(--muted)}.m-n{text-anchor:middle}.m-north{fill:var(--muted)}
+</style>
+</head>
+<body id="top">
+
+<aside class="banner" aria-label="About this website"><div class="wrap">
+  <span><b>Example website.</b> Sparrowhawk Electrical is a made-up business.</span>
+  <a href="#want">Want one<span class="dsk"> for your business</span>?</a>
+</div></aside>
+
+<header class="top"><div class="wrap">
+  <a class="brand" href="#top"><img src="assets/logo/sparrowhawk-logo-reversed.svg" alt="Sparrowhawk Electrical" width="652" height="110"></a>
+  <nav class="nav" aria-label="Main">
+    <a href="#patch">Our patch</a><a href="#prices">Prices</a><a href="#work">Our work</a><a href="#quote">Get a quote</a><a href="#faq">Questions</a>
+  </nav>
+</div></header>
+
+<main>
+<section class="hero" aria-labelledby="h1">
+  <div class="hero-copy">
+    <h1 id="h1">Fuse boards, faults and chargers, <mark>done safely</mark></h1>
+    <p class="where">Local electricians covering St Leonards, Ringwood, Ashley Heath and West Moors.</p>
+    <a class="num" href="#quote" data-demo="call" aria-label="Call 01425 000000 (placeholder number)">01425 000000</a>
+    <ul class="trust" aria-label="About the firm">
+      <li>NICEIC approved contractor (example)</li>
+      <li>Part P certified (example)</li>
+      <li>5.0 from 52 Google reviews (sample)</li>
+    </ul>
+    <p><a class="quote-link" href="#quote">Get a fixed written quote</a></p>
+  </div>
+  <figure class="hero-photo">
+    <img src="assets/hero-electrician.webp" srcset="assets/hero-electrician-800.webp 800w, assets/hero-electrician.webp 1400w" sizes="(min-width:900px) 46vw, 100vw" width="1400" height="934" alt="An electrician crouched at a cupboard under the stairs, testing a consumer unit with a yellow multimeter." fetchpriority="high">
+    <figcaption>Illustrative photos</figcaption>
+  </figure>
+</section>
+<div class="barwrap" aria-hidden="true"><div class="bars on-slate"></div></div>
+
+<aside class="emerg" aria-label="Electrical emergencies"><div class="wrap">
+  <b>Burning smell or a trip that won't reset?</b>
+  <p>Switch off at the mains if it is safe to, keep clear, then call. If you can see smoke or flames, call 999 first.</p>
+  <a href="#quote" data-demo="call" aria-label="Call 01425 000000 (placeholder number)">01425 000000</a>
+</div></aside>
+
+<section class="patch" id="patch" aria-labelledby="pt-h">
+  <div class="patch-head">
+    <h2 id="pt-h">Jobs pinned where they happened</h2>
+    <p class="lede">Based in St Leonards, usually within about 10 miles: St Leonards, St Ives, Ashley Heath, Ringwood, West Moors and Ferndown. Tap a place to see a job or review from there.</p></div>
+  <div class="mapwrap"><div class="map" id="map">
+    <svg class="sheet" viewBox="480 190 520 457" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><defs><path id="pt" d="M0-9 3.4-2.4H1.7L4.6 3.2H.9V6H-.9V3.2H-4.6L-1.7-2.4H-3.4Z"/><path id="ph" d="M-3 2-1.4-2M0 2V-3M3 2 1.4-2"/></defs><g id="mapg"><rect class="m-land" width="1000" height="880"/><path class="m-wood" d="M589 -28C527 -9 635 44 643 85C651 126 630 178 636 216C642 254 657 294 679 312C701 330 738 338 768 324C798 309 827 257 857 227C887 197 920 185 946 142C973 99 1077 -0 1018 -28C958 -57 652 -47 589 -28Z"/><path class="m-heath" d="M411 159C437 149 485 161 507 182C529 202 547 253 543 284C539 315 507 360 482 369C457 378 415 361 393 341C371 320 347 274 350 244C353 214 385 169 411 159Z"/><path class="m-cont" d="M517 744C513 745 498 745 494 750C491 756 493 771 494 778C496 785 501 788 506 794C511 800 518 807 525 812C531 817 535 821 543 824C551 826 564 828 573 827C582 826 589 822 596 818C602 814 610 808 611 801C612 794 606 784 602 778C597 773 589 771 583 767C576 763 570 760 561 756C552 752 535 747 528 746C521 744 519 744 517 744M472 721C468 723 453 729 450 733C446 738 448 742 449 749C451 755 457 765 461 772C465 778 468 783 473 790C478 797 485 806 490 812C496 819 499 823 506 829C512 834 521 841 528 845C536 850 541 854 551 854C560 855 575 851 584 849C594 846 599 843 607 839C614 835 623 830 629 826C635 821 640 820 642 812C644 805 643 790 640 782C638 775 631 772 625 767C620 763 614 760 606 756C599 752 587 748 579 745C570 741 564 737 555 733C547 730 536 727 528 725C520 723 515 721 506 721C496 720 478 721 472 721C466 722 472 721 472 721M941 880C938 878 929 869 921 865C913 862 902 860 893 857C884 855 875 853 865 853C855 853 840 854 835 857C829 860 832 867 831 870C831 874 833 878 833 880M719 517C718 521 713 534 714 542C716 549 728 564 730 562C733 560 733 538 731 530C729 523 721 519 719 517C717 514 719 517 719 517M34 626C36 628 39 635 45 639C51 642 62 648 67 648C73 648 81 642 79 639C77 636 64 631 56 629C49 627 37 627 34 626M572 880C576 878 588 873 596 869C603 865 610 861 617 857C624 854 630 850 636 846C642 842 646 841 652 835C659 829 670 820 674 812C678 805 677 796 675 790C673 783 668 779 663 773C657 767 649 761 642 756C636 751 631 748 623 745C615 741 604 737 596 733C588 730 581 726 573 723C565 720 558 717 551 714C543 712 537 710 528 708C519 706 506 703 494 702C483 700 472 700 461 700C449 701 436 700 427 703C418 707 407 715 406 722C404 729 412 738 416 746C420 753 425 760 430 767C436 775 442 783 447 790C452 797 457 803 461 809C465 815 468 821 472 827C476 833 480 839 485 846C490 853 498 863 503 869C509 874 515 878 517 880C520 882 517 880 517 880M988 880C984 878 973 872 965 869C957 865 951 861 942 857C933 854 919 851 910 849C901 846 897 846 888 844C878 841 864 837 855 835C845 833 839 829 831 829C824 829 812 828 808 835C804 841 807 861 808 869C809 876 813 878 814 880M820 369C818 372 811 377 806 384C801 390 796 399 791 406C787 414 785 423 779 429C773 434 763 437 753 438C743 438 729 431 719 432C710 432 702 435 696 440C691 445 688 454 685 463C683 473 682 485 681 496C680 508 681 520 682 530C683 540 683 547 685 556C687 566 691 578 694 587C697 595 699 602 703 609C708 617 713 626 719 631C725 636 735 642 742 640C748 638 754 628 758 621C761 613 762 604 764 595C766 585 767 575 768 564C769 553 770 542 771 530C772 519 774 506 775 496C776 487 774 481 778 474C781 467 791 458 798 454C805 449 813 450 820 446C828 442 836 435 842 429C848 422 851 416 854 408C857 401 860 391 858 384C856 376 849 364 843 362C836 360 824 368 820 369M0 662C4 664 15 669 22 672C30 676 37 678 45 681C52 684 58 687 68 688C77 690 92 692 101 691C110 689 116 684 124 680C131 677 139 673 146 670C154 667 159 664 169 662C178 659 191 656 202 656C213 656 227 661 236 663C245 665 249 666 258 668C268 670 283 674 292 676C301 679 307 680 315 683C322 687 331 692 337 696C344 701 348 706 354 711C359 716 365 722 371 728C376 733 380 738 386 745C391 751 399 761 404 767C410 773 412 776 416 781C420 787 425 794 429 801C433 808 438 816 441 824C445 831 447 838 449 847C452 857 455 875 456 880C457 885 456 880 456 880M1000 808C998 811 994 819 988 824C983 829 976 835 966 838C957 841 943 839 933 839C922 838 912 837 903 835C893 833 885 831 876 828C868 825 861 822 854 819C846 816 841 812 831 809C822 807 807 803 798 804C788 806 779 811 775 818C771 825 773 838 775 846C777 854 783 861 787 867C790 873 794 878 796 880M624 880C627 878 634 872 640 867C647 863 655 856 663 851C670 847 678 844 685 839C693 834 703 830 708 824C712 817 714 809 712 801C710 793 702 785 697 778C693 772 691 769 685 764C680 759 670 752 663 747C655 742 648 738 640 733C633 729 625 725 618 722C610 719 603 717 596 714C588 711 581 707 573 704C566 701 560 699 551 696C541 694 526 690 517 688C508 686 504 686 494 685C485 684 472 683 461 682C449 681 436 680 427 679C418 678 414 678 404 677C395 676 380 673 371 671C361 669 356 667 348 664C341 660 333 656 326 652C318 647 310 640 303 635C297 630 291 625 285 621C280 616 276 613 270 609C263 605 255 599 247 595C240 591 234 587 225 585C215 583 200 582 191 583C182 585 176 590 169 593C161 597 155 599 146 602C138 604 126 608 118 609C109 610 104 611 96 609C87 608 76 602 67 599C59 596 52 594 45 592C37 589 30 587 22 584C15 581 4 577 0 576M507 0C507 6 507 23 508 34C509 45 511 58 513 68C514 77 514 82 517 91C519 101 523 115 527 124C530 133 535 141 538 147C542 152 544 157 551 159C557 161 571 164 576 158C581 152 579 135 581 124C582 113 584 99 584 90C585 82 585 81 584 73C584 66 584 55 582 45C581 35 577 19 575 11C573 4 571 2 571 0M865 305C861 305 850 306 843 308C835 310 828 313 820 317C813 321 805 326 798 332C791 337 783 345 777 350C772 355 770 358 764 363C758 367 751 374 742 378C732 381 717 381 708 383C699 385 691 386 685 390C680 393 677 398 674 406C671 415 668 429 667 440C665 451 664 464 664 474C663 483 663 489 663 496C663 504 663 510 663 519C664 528 665 542 666 553C668 564 670 577 672 587C673 596 675 602 677 609C679 617 682 624 685 632C689 639 693 647 699 654C705 661 712 668 719 673C726 679 733 685 742 685C750 686 763 682 770 677C776 672 776 664 778 654C780 645 781 631 783 621C784 610 785 600 787 590C788 581 790 572 792 564C794 556 796 549 799 542C803 534 807 526 812 519C818 512 826 505 831 499C837 494 841 491 847 485C852 479 860 471 865 464C870 458 873 454 876 447C880 441 884 434 888 425C891 416 896 404 898 395C901 386 902 382 903 372C905 363 906 348 905 338C904 329 903 322 896 316C890 310 871 307 866 305C861 303 865 305 865 305M292 403C290 406 282 411 277 417C272 424 268 431 265 440C262 449 259 463 259 474C259 485 261 499 265 508C269 517 274 525 281 527C288 529 299 523 307 519C314 515 321 510 326 504C331 499 335 494 338 485C342 476 346 463 346 451C346 440 343 426 339 417C336 409 334 404 326 402C318 400 298 403 292 403C287 403 292 403 292 403M0 704C4 706 13 710 22 712C32 715 45 718 56 719C67 720 80 721 90 719C99 718 105 714 113 711C120 707 127 703 135 699C142 695 150 692 158 688C167 685 181 679 188 677C195 675 194 676 202 678C210 679 227 683 236 686C245 688 251 689 258 692C266 694 274 696 282 699C291 703 301 707 309 711C316 715 322 718 328 722C335 726 342 731 348 737C355 742 363 750 368 756C374 762 377 766 382 771C387 777 392 783 396 790C400 797 404 803 407 812C411 822 414 835 415 846C415 857 412 874 412 880C412 886 412 880 412 880M1000 767C998 770 993 777 989 783C985 788 980 795 975 801C969 807 963 813 955 817C947 821 933 823 926 824C918 825 918 825 910 823C902 822 886 818 876 815C867 811 861 807 854 803C846 799 839 794 831 790C824 786 817 781 810 778C802 776 794 775 787 775C779 775 772 778 764 779C757 779 749 780 742 778C734 775 726 770 719 765C712 759 704 750 698 745C692 739 688 737 682 733C677 729 670 725 663 721C656 717 648 712 640 708C633 704 626 701 618 697C610 694 602 691 593 688C584 685 571 681 562 678C553 676 549 675 539 673C530 672 516 669 506 668C496 667 489 667 480 666C470 665 460 663 449 662C439 660 425 658 416 656C406 654 401 652 393 649C386 646 378 643 371 639C363 635 356 631 348 626C341 621 333 614 327 609C322 605 320 603 315 598C309 592 300 582 294 575C289 569 287 563 281 558C275 553 268 546 258 544C249 542 234 545 225 546C215 548 208 550 200 553C192 556 185 560 177 564C169 568 163 572 154 575C145 579 132 584 124 587C115 589 109 591 101 590C94 590 87 586 79 584C71 581 62 578 53 575C43 572 31 568 22 565C14 562 4 558 0 557C-4 556 0 557 0 557M661 880C664 878 672 872 679 869C687 865 699 860 708 858C716 855 723 854 730 854C738 855 745 857 753 862C760 866 771 877 775 880C778 883 775 880 775 880M26 0C25 4 21 15 21 23C22 30 24 39 28 45C32 51 38 57 45 58C52 59 61 56 67 52C73 48 78 42 81 34C83 25 83 6 84 0C84 -6 84 0 84 0M491 0C491 6 492 24 493 34C494 43 494 47 496 56C497 66 499 81 501 90C503 100 503 104 506 113C508 123 511 137 515 147C519 156 524 163 528 169C532 175 534 177 539 183C545 189 554 198 560 203C567 208 572 212 578 214C585 216 595 219 599 214C604 210 606 196 607 189C608 181 607 178 607 169C606 160 605 147 604 135C604 124 604 113 604 102C604 90 605 79 605 68C604 56 604 45 603 34C601 23 597 6 596 0C595 -6 596 0 596 0M1000 133C999 138 996 150 994 158C992 166 990 171 989 181C987 190 983 206 985 214C987 223 998 229 1000 232C1002 235 1000 232 1000 232M1000 732C998 735 993 740 989 746C984 752 979 760 973 767C967 774 961 784 955 790C950 795 947 798 940 801C932 804 920 808 910 808C900 808 890 804 882 801C874 798 868 794 861 790C855 786 849 782 843 776C836 770 827 762 821 756C816 750 813 747 809 740C805 732 801 721 800 711C798 700 799 688 799 677C799 666 800 654 801 643C801 632 802 619 804 609C805 600 806 593 809 585C812 577 816 567 820 560C824 552 828 548 833 542C839 535 849 526 854 520C859 514 861 514 865 508C870 502 877 493 883 485C888 478 892 470 896 463C900 455 904 448 907 440C910 432 913 425 916 417C919 410 921 403 924 395C927 386 930 376 933 367C935 358 938 347 940 338C942 330 944 325 945 316C947 306 951 291 949 282C947 273 941 265 933 262C924 259 910 262 899 263C888 264 875 267 865 269C856 271 850 273 843 276C835 278 828 281 820 284C813 288 805 291 798 296C790 301 782 307 775 312C768 317 762 323 755 327C749 332 744 336 737 338C729 341 718 343 708 344C697 345 683 340 674 342C666 345 661 352 657 361C654 370 653 385 652 395C651 404 651 408 650 417C650 427 650 440 649 451C649 463 649 474 648 485C648 496 648 508 648 519C648 530 649 542 649 553C649 564 650 575 650 587C650 598 652 610 650 621C649 632 646 647 640 653C635 659 626 657 618 657C610 657 599 655 590 654C580 653 572 652 562 651C552 650 539 649 528 648C517 647 504 646 494 645C485 645 481 644 472 643C463 641 448 639 438 636C429 634 423 632 416 629C408 626 400 622 393 617C386 612 378 605 373 598C368 591 365 584 364 575C364 567 368 554 371 545C373 535 377 527 379 519C382 511 383 506 385 496C386 487 388 474 388 463C389 451 388 439 387 429C386 418 385 409 382 400C379 391 375 381 371 374C367 367 365 364 360 360C354 355 346 349 337 346C328 344 313 343 303 345C294 346 288 349 281 353C273 357 264 365 258 370C253 375 251 378 247 384C243 390 237 399 233 406C229 414 227 420 223 429C220 438 216 451 213 460C211 470 209 477 207 485C204 493 202 500 198 508C193 515 185 524 180 530C175 536 172 537 167 542C161 546 153 551 146 555C139 559 133 563 124 565C114 567 99 568 90 567C81 567 76 564 67 562C58 559 45 556 36 553C27 550 17 547 11 544C5 542 2 541 0 540M135 880C131 876 119 864 113 857C108 851 105 846 101 839C97 831 93 820 91 812C89 804 88 797 89 790C90 782 91 774 95 767C99 760 107 753 112 747C118 742 122 738 127 733C133 729 139 724 146 720C153 716 161 711 169 707C176 703 184 698 191 697C199 696 204 699 213 701C223 703 238 706 247 709C257 711 262 713 270 716C277 718 285 721 292 725C300 728 307 732 315 737C322 742 331 749 337 754C343 759 346 761 351 767C356 773 363 782 367 790C372 797 375 803 377 812C379 822 379 836 378 846C377 856 373 866 371 872C369 877 368 879 367 880M478 0C478 6 480 24 481 34C482 43 482 48 483 57C484 66 486 79 488 90C489 101 491 115 493 124C495 134 496 139 498 147C501 154 504 162 508 169C512 177 517 185 522 192C528 199 534 207 539 212C544 218 547 220 553 226C558 231 567 239 573 245C579 250 584 254 589 259C595 265 602 272 607 278C612 285 615 290 618 298C621 307 625 319 627 327C629 336 629 340 630 350C632 359 633 372 634 384C634 395 635 406 635 417C635 429 635 440 635 451C635 463 634 474 634 485C633 496 633 508 632 519C631 530 631 543 629 553C628 562 628 568 625 575C622 583 619 592 614 598C609 604 604 608 596 611C587 615 573 616 562 618C551 619 539 618 528 618C517 618 505 617 494 615C484 614 476 612 467 609C459 606 450 603 443 598C437 593 431 586 427 579C423 571 422 563 421 553C419 543 420 530 420 519C420 508 420 496 420 485C420 474 420 463 419 451C419 440 418 427 417 417C415 408 415 404 413 395C411 386 408 372 404 363C401 355 397 347 393 341C389 335 387 332 382 327C376 323 369 317 360 313C350 310 337 307 326 306C315 306 301 308 292 310C283 313 277 315 270 319C262 323 253 330 247 335C241 340 238 343 233 350C227 356 221 365 217 372C212 380 208 387 205 395C201 402 198 410 195 417C192 425 189 432 186 440C183 448 180 455 178 463C175 470 172 478 168 485C165 493 161 500 156 508C150 515 141 524 135 530C128 536 124 539 117 542C109 544 99 545 90 545C81 545 74 543 65 542C55 540 43 537 34 534C25 532 17 529 11 527C6 525 2 523 0 523M1000 77C998 81 993 94 990 102C987 109 984 117 981 124C978 132 975 139 972 147C968 154 965 162 961 169C957 177 951 185 947 192C942 198 939 202 933 207C926 212 918 218 910 223C903 227 895 230 888 233C880 236 873 238 865 241C858 244 851 246 843 249C834 252 823 256 815 259C806 263 798 267 791 271C783 275 777 278 771 282C765 286 760 290 753 294C746 297 740 303 730 305C721 307 706 307 697 305C688 303 682 298 676 293C671 289 667 285 663 279C659 274 655 267 652 259C648 252 644 243 640 234C637 225 635 212 633 203C631 194 631 190 629 180C628 171 626 158 625 147C624 135 622 124 622 113C622 102 624 90 624 79C625 68 625 56 625 45C625 34 624 19 623 11C622 4 622 2 621 0M0 101C3 103 11 110 19 113C26 115 37 117 45 117C53 117 60 116 67 112C75 109 83 104 90 98C96 93 101 86 106 79C110 72 114 65 117 56C120 48 122 40 124 30C125 21 126 5 126 0C126 -5 126 0 126 0M1000 701C997 704 985 716 980 722C974 728 971 733 966 739C962 745 959 749 954 756C948 762 940 773 933 778C926 784 920 787 910 788C901 788 885 782 876 779C868 775 866 772 860 767C855 762 847 754 843 748C838 741 835 734 831 726C828 718 825 708 823 699C821 691 820 686 820 677C819 668 819 652 820 643C820 634 820 629 822 621C824 612 828 599 831 591C835 584 838 580 843 573C847 567 854 559 860 553C866 546 872 540 876 534C881 529 884 525 888 519C893 513 898 504 903 496C907 489 911 481 914 474C918 466 921 459 924 451C928 444 930 437 933 429C937 420 940 410 944 401C947 391 951 381 954 372C958 364 960 357 963 350C966 342 969 335 973 327C977 320 982 311 987 305C991 298 998 292 1000 289C1002 286 1000 289 1000 289M233 880C229 878 217 873 210 869C203 864 197 859 191 854C185 848 179 842 175 835C170 828 165 820 162 812C159 805 157 797 157 790C156 782 156 775 158 767C160 760 165 751 170 745C176 738 182 731 191 729C200 726 215 728 225 729C235 730 240 731 250 733C259 736 272 741 281 744C289 748 295 752 301 756C306 760 310 762 315 767C320 773 329 782 333 790C337 797 339 805 339 812C340 820 339 827 336 835C334 842 330 850 324 857C319 864 308 873 303 877C299 880 298 879 297 880M466 0C466 6 468 23 469 34C470 45 471 56 472 65C473 74 473 80 475 90C476 100 477 114 479 124C480 134 481 143 483 153C486 162 489 172 493 181C497 189 502 196 506 202C510 208 512 211 517 217C522 223 529 231 535 237C541 243 545 246 551 252C556 258 564 265 569 271C575 277 580 282 584 288C589 294 592 300 596 308C599 316 604 327 607 336C610 345 611 352 613 361C615 370 617 381 618 390C619 399 620 407 620 417C620 428 621 440 620 451C620 463 619 476 618 485C618 495 617 498 615 508C613 517 610 533 607 542C604 550 601 556 596 561C590 567 581 572 574 575C566 579 560 580 551 580C541 580 526 579 517 578C507 576 502 574 494 570C487 566 480 559 474 553C469 546 465 538 462 530C459 523 457 517 455 508C453 498 451 483 450 474C448 464 448 461 447 451C446 442 445 429 444 417C443 406 441 393 440 384C438 374 438 370 435 361C433 352 430 340 427 332C424 323 420 317 416 310C411 304 406 298 400 293C393 289 387 285 378 282C370 279 359 277 348 276C338 275 326 275 315 275C303 276 290 279 281 281C272 283 266 286 258 289C251 293 242 298 236 303C230 307 226 310 221 316C215 322 208 331 203 338C198 346 195 351 191 359C187 366 184 373 180 381C176 389 172 398 169 406C165 414 162 421 159 429C155 436 152 444 148 451C144 459 140 467 136 474C132 481 129 486 124 492C119 498 114 504 106 508C99 512 89 515 79 517C68 518 56 517 45 515C34 514 22 510 15 508C7 506 2 503 0 502M1000 37C998 41 993 53 989 61C985 69 981 78 978 87C974 95 970 104 966 112C963 120 959 128 955 135C951 142 948 148 944 154C940 160 938 163 932 169C927 175 917 185 910 191C903 197 899 199 892 203C885 207 877 211 869 214C861 218 851 222 843 225C835 228 828 230 820 233C813 236 805 238 798 241C790 244 783 247 775 250C768 254 762 257 753 261C743 264 729 270 719 270C709 270 699 265 692 259C684 254 679 246 674 240C669 233 666 228 663 221C659 213 655 200 653 192C650 183 650 179 648 169C647 160 645 147 644 135C643 124 643 113 643 102C643 90 645 79 646 68C647 56 647 45 647 34C648 23 647 6 647 0C647 -6 647 0 647 0M0 156C4 156 13 159 22 159C32 160 45 159 54 158C64 157 71 154 79 151C86 148 95 142 101 138C107 133 110 130 115 124C120 118 126 109 130 102C134 94 136 87 139 79C142 71 144 63 146 54C148 44 150 31 151 23C152 14 152 4 153 0M1000 670C996 673 983 683 978 688C972 693 971 694 966 700C961 705 953 715 948 722C942 729 938 735 933 741C927 747 921 753 914 756C907 759 895 759 888 757C880 755 875 750 869 745C864 739 858 730 854 722C850 715 848 707 846 699C843 692 842 686 841 677C840 668 841 652 842 643C843 634 845 628 848 621C851 613 855 605 860 598C864 591 872 582 876 577C881 571 883 569 888 563C892 557 898 549 903 542C908 534 912 526 916 519C920 511 923 504 927 496C930 489 933 481 936 474C939 466 942 460 945 451C948 443 951 433 955 424C959 415 963 404 966 395C970 386 973 380 976 372C980 365 983 357 987 350C991 343 998 333 1000 330C1002 327 1000 330 1000 330M454 0C454 6 456 23 457 34C458 45 459 58 460 68C460 77 461 81 461 90C462 100 462 113 463 124C464 135 463 147 465 158C466 169 468 182 471 192C473 201 474 207 478 214C482 222 490 231 494 237C499 242 502 244 507 248C513 253 521 258 528 264C535 270 544 277 550 282C556 287 557 288 562 293C566 299 572 308 577 316C581 323 584 331 587 338C590 346 593 354 596 363C598 373 600 384 602 395C603 406 604 417 604 429C604 440 604 451 602 463C601 474 599 487 596 496C593 506 588 513 584 519C580 524 579 527 571 530C564 533 548 537 539 536C530 536 524 533 517 528C510 523 502 515 497 508C491 501 488 493 486 485C483 478 481 472 479 463C477 453 474 438 473 429C471 419 471 416 470 406C469 397 468 384 467 372C466 361 464 348 463 338C462 329 462 325 460 316C458 306 455 291 451 282C448 273 444 268 438 263C432 258 423 254 416 252C408 249 403 248 393 247C384 246 371 245 360 245C348 245 336 245 326 246C316 246 308 247 298 248C289 249 279 251 270 252C260 254 252 256 243 259C235 263 226 267 219 271C212 275 208 278 202 284C197 289 190 297 185 305C180 312 176 320 172 327C168 335 165 342 161 350C158 357 155 365 151 372C148 380 145 387 141 395C138 402 134 410 130 417C126 425 122 433 117 440C112 447 106 455 101 460C96 466 92 470 85 474C77 478 67 483 56 484C46 486 32 484 22 482C13 481 4 477 0 476M1000 1C998 4 992 15 989 23C985 30 981 39 978 47C974 55 970 64 966 72C963 80 959 89 955 96C951 104 948 111 944 118C940 124 938 129 933 135C928 142 920 152 914 158C909 164 905 167 899 172C893 177 884 183 876 187C869 191 861 194 854 198C846 201 840 203 831 206C823 209 814 212 804 214C795 217 784 220 775 223C767 225 762 227 753 228C743 230 728 232 719 230C710 229 702 223 697 218C691 214 688 210 685 203C681 196 677 188 674 178C671 169 669 158 668 147C667 136 666 124 666 113C666 102 667 90 667 79C668 68 669 56 669 45C670 34 671 19 671 11C671 4 671 2 671 0M0 203C6 203 22 202 34 201C45 200 58 198 67 196C77 194 82 193 90 190C97 187 105 184 112 179C120 174 129 165 135 158C140 151 142 147 146 139C150 132 154 121 156 113C159 105 161 99 163 90C165 82 167 70 169 61C170 51 171 44 172 34C173 24 175 6 175 0C176 -6 175 0 175 0M1000 637C996 639 985 644 978 648C970 653 961 659 955 663C949 668 946 671 940 677C935 683 928 692 921 697C914 703 906 711 899 710C891 709 881 698 876 691C872 683 872 674 872 666C872 657 874 649 876 642C879 634 884 628 889 621C893 613 900 605 905 598C910 590 914 583 918 575C922 568 925 560 929 553C932 545 935 538 937 530C940 523 942 516 945 508C948 499 952 488 955 479C958 470 962 460 964 451C967 443 970 436 973 429C976 421 978 414 982 406C985 399 989 390 992 384C995 377 999 371 1000 369M441 0C442 6 444 23 444 34C445 45 446 56 446 68C446 79 446 90 446 102C446 113 445 125 444 135C442 146 441 157 438 166C435 175 432 183 427 189C422 195 415 199 408 203C400 207 390 209 382 211C374 213 369 213 360 214C350 216 337 217 326 218C315 219 303 219 292 220C281 220 270 220 258 220C247 220 235 220 225 219C215 218 206 219 199 214C192 210 184 201 181 192C178 182 181 169 181 158C181 147 183 135 184 124C185 113 186 101 188 90C189 79 190 68 191 59C192 50 193 44 194 34C195 24 196 6 197 0C197 -6 197 0 197 0M980 0C979 4 974 15 970 23C967 30 964 38 961 45C957 53 954 60 951 68C947 75 944 83 939 90C935 98 931 106 926 113C921 120 915 128 910 134C905 140 903 142 898 147C892 151 884 158 876 163C869 168 861 171 854 175C846 178 841 181 831 183C822 186 807 190 798 192C789 194 785 195 775 195C766 195 751 196 742 194C732 193 725 189 719 185C713 181 709 176 706 169C702 163 699 156 697 147C694 137 692 124 691 113C690 102 690 90 690 79C690 68 691 56 691 45C692 34 693 19 693 11C693 4 694 2 694 0M0 257C5 255 18 250 28 248C37 246 46 245 56 244C67 243 79 242 90 243C101 244 116 245 124 248C131 251 133 252 135 259C137 267 137 284 137 293C136 303 135 307 132 316C130 325 127 336 124 346C120 355 117 364 113 372C109 380 105 388 101 395C97 401 95 405 90 411C85 417 79 424 71 429C64 434 53 438 46 440C38 442 32 441 25 440C17 439 4 433 0 431C-4 430 0 431 0 431M514 316C518 316 533 314 539 316C545 318 547 322 551 327C556 333 562 342 566 350C570 357 572 363 575 372C578 382 581 395 582 406C583 417 582 430 580 440C579 450 578 458 573 465C568 472 558 481 551 482C543 483 534 477 528 472C522 467 518 459 514 451C511 443 508 434 506 425C503 415 502 405 501 395C501 384 500 372 501 361C501 350 503 336 506 328C508 321 512 318 514 316M1000 599C996 598 983 598 978 594C972 590 967 584 965 575C963 567 964 551 964 542C965 532 966 528 967 519C969 510 973 495 975 485C977 476 979 470 981 463C983 455 986 448 989 439C992 430 998 415 1000 411C1002 406 1000 411 1000 411M428 0C428 6 430 23 430 34C430 45 431 56 430 68C430 79 429 92 427 102C426 111 425 117 422 124C420 132 417 139 413 147C408 154 400 162 393 168C386 173 378 177 371 180C363 183 358 184 348 186C339 188 326 189 315 190C303 190 291 190 281 188C271 186 261 184 253 181C246 177 241 175 236 169C230 164 224 156 221 147C217 137 215 122 214 113C212 103 212 100 212 90C212 81 213 66 213 56C214 47 214 43 215 34C216 24 218 6 218 0C219 -6 218 0 218 0M960 0C959 4 955 15 952 23C949 30 946 38 943 45C939 53 936 60 932 68C928 75 924 83 920 90C915 98 909 106 903 113C898 119 894 124 888 129C881 135 873 141 865 146C858 150 850 154 843 157C835 159 830 162 820 163C811 165 798 167 787 167C775 166 761 163 753 160C744 156 741 153 736 147C731 141 726 132 723 124C719 117 718 111 717 102C715 92 714 79 713 68C712 56 713 45 713 34C713 23 715 6 715 0C716 -6 715 0 715 0M411 0C411 6 413 23 413 34C413 45 412 57 411 68C409 78 407 88 404 97C402 106 397 114 393 121C389 127 386 131 381 135C375 140 369 145 360 149C350 153 334 156 326 158C318 159 317 159 310 158C302 157 289 155 281 151C272 148 264 141 258 136C253 130 250 125 247 118C244 110 241 100 239 90C238 80 237 68 237 56C236 45 237 32 238 23C239 13 241 4 241 0M940 0C938 4 935 14 932 23C929 31 925 41 921 49C918 57 914 64 910 70C906 77 902 83 897 90C891 97 883 106 876 112C870 117 866 120 859 124C851 128 841 133 832 135C824 138 817 139 809 139C800 139 789 138 781 135C774 133 768 130 762 124C756 118 750 109 746 102C742 94 741 88 739 79C737 70 735 56 735 45C735 34 736 19 736 11C736 4 737 2 737 0M388 0C389 6 391 23 390 34C390 45 387 58 385 68C382 77 378 84 374 90C370 97 366 102 360 107C353 112 346 117 337 119C328 120 313 120 303 118C294 115 287 108 281 102C275 95 272 88 270 81C267 73 266 66 265 56C264 47 264 32 265 23C265 13 268 4 268 0M916 0C915 4 913 15 910 23C907 31 903 40 899 48C895 55 892 61 887 68C881 75 872 85 866 90C859 96 855 98 848 102C840 105 830 109 820 109C810 109 796 105 789 102C781 98 779 95 775 89C771 84 767 76 764 67C761 57 760 45 759 34C759 23 761 6 762 0C762 -6 762 0 762 0M338 0C340 4 348 15 349 23C350 30 347 39 343 45C339 51 331 57 326 57C321 57 314 53 312 45C309 37 311 19 313 11C315 4 321 2 323 0M885 0C884 5 880 23 876 31C873 39 871 43 865 49C860 55 850 63 843 67C835 70 827 72 820 70C813 68 805 62 800 56C795 50 792 43 791 34C790 24 793 6 793 0C794 -6 793 0 793 0"/><g class="m-grid"><path d="M100 0V880"/><path d="M200 0V880"/><path d="M300 0V880"/><path d="M400 0V880"/><path d="M500 0V880"/><path d="M600 0V880"/><path d="M700 0V880"/><path d="M800 0V880"/><path d="M900 0V880"/><path d="M0 80H1000"/><path d="M0 180H1000"/><path d="M0 280H1000"/><path d="M0 380H1000"/><path d="M0 480H1000"/><path d="M0 580H1000"/><path d="M0 680H1000"/><path d="M0 780H1000"/></g><g class="m-tree"><use href="#pt" x="617" y="-3"/><use href="#pt" x="623" y="27"/><use href="#pt" x="654" y="-1"/><use href="#pt" x="656" y="30"/><use href="#pt" x="654" y="58"/><use href="#pt" x="647" y="72"/><use href="#pt" x="646" y="100"/><use href="#pt" x="644" y="124"/><use href="#pt" x="651" y="161"/><use href="#pt" x="649" y="188"/><use href="#pt" x="656" y="202"/><use href="#pt" x="651" y="233"/><use href="#pt" x="681" y="5"/><use href="#pt" x="671" y="25"/><use href="#pt" x="670" y="58"/><use href="#pt" x="681" y="80"/><use href="#pt" x="675" y="102"/><use href="#pt" x="681" y="130"/><use href="#pt" x="678" y="151"/><use href="#pt" x="672" y="176"/><use href="#pt" x="679" y="209"/><use href="#pt" x="671" y="239"/><use href="#pt" x="673" y="259"/><use href="#pt" x="671" y="283"/><use href="#pt" x="681" y="310"/><use href="#pt" x="696" y="-6"/><use href="#pt" x="704" y="26"/><use href="#pt" x="699" y="48"/><use href="#pt" x="704" y="81"/><use href="#pt" x="706" y="105"/><use href="#pt" x="698" y="124"/><use href="#pt" x="705" y="155"/><use href="#pt" x="705" y="176"/><use href="#pt" x="706" y="206"/><use href="#pt" x="707" y="239"/><use href="#pt" x="702" y="253"/><use href="#pt" x="708" y="286"/><use href="#pt" x="707" y="309"/><use href="#pt" x="733" y="3"/><use href="#pt" x="722" y="21"/><use href="#pt" x="728" y="52"/><use href="#pt" x="725" y="73"/><use href="#pt" x="727" y="99"/><use href="#pt" x="729" y="135"/><use href="#pt" x="723" y="157"/><use href="#pt" x="731" y="177"/><use href="#pt" x="733" y="214"/><use href="#pt" x="726" y="233"/><use href="#pt" x="733" y="260"/><use href="#pt" x="727" y="292"/><use href="#pt" x="732" y="310"/><use href="#pt" x="751" y="2"/><use href="#pt" x="749" y="27"/><use href="#pt" x="760" y="52"/><use href="#pt" x="751" y="78"/><use href="#pt" x="754" y="99"/><use href="#pt" x="749" y="125"/><use href="#pt" x="751" y="155"/><use href="#pt" x="751" y="178"/><use href="#pt" x="748" y="209"/><use href="#pt" x="759" y="236"/><use href="#pt" x="755" y="262"/><use href="#pt" x="750" y="289"/><use href="#pt" x="753" y="313"/><use href="#pt" x="784" y="3"/><use href="#pt" x="786" y="21"/><use href="#pt" x="785" y="45"/><use href="#pt" x="784" y="79"/><use href="#pt" x="780" y="110"/><use href="#pt" x="781" y="129"/><use href="#pt" x="784" y="161"/><use href="#pt" x="782" y="180"/><use href="#pt" x="779" y="207"/><use href="#pt" x="783" y="231"/><use href="#pt" x="778" y="261"/><use href="#pt" x="778" y="284"/><use href="#pt" x="805" y="2"/><use href="#pt" x="813" y="24"/><use href="#pt" x="806" y="56"/><use href="#pt" x="801" y="75"/><use href="#pt" x="813" y="109"/><use href="#pt" x="806" y="125"/><use href="#pt" x="812" y="159"/><use href="#pt" x="810" y="189"/><use href="#pt" x="811" y="207"/><use href="#pt" x="801" y="231"/><use href="#pt" x="806" y="260"/><use href="#pt" x="802" y="282"/><use href="#pt" x="833" y="-2"/><use href="#pt" x="831" y="24"/><use href="#pt" x="826" y="57"/><use href="#pt" x="833" y="84"/><use href="#pt" x="831" y="106"/><use href="#pt" x="828" y="124"/><use href="#pt" x="838" y="161"/><use href="#pt" x="829" y="188"/><use href="#pt" x="836" y="205"/><use href="#pt" x="833" y="240"/><use href="#pt" x="858" y="-4"/><use href="#pt" x="857" y="21"/><use href="#pt" x="861" y="49"/><use href="#pt" x="864" y="79"/><use href="#pt" x="856" y="100"/><use href="#pt" x="860" y="126"/><use href="#pt" x="863" y="151"/><use href="#pt" x="858" y="183"/><use href="#pt" x="855" y="212"/><use href="#pt" x="878" y="-3"/><use href="#pt" x="886" y="22"/><use href="#pt" x="889" y="53"/><use href="#pt" x="887" y="75"/><use href="#pt" x="883" y="107"/><use href="#pt" x="882" y="123"/><use href="#pt" x="889" y="160"/><use href="#pt" x="881" y="176"/><use href="#pt" x="916" y="-2"/><use href="#pt" x="907" y="31"/><use href="#pt" x="905" y="53"/><use href="#pt" x="908" y="82"/><use href="#pt" x="911" y="108"/><use href="#pt" x="905" y="132"/><use href="#pt" x="911" y="155"/><use href="#pt" x="934" y="1"/><use href="#pt" x="934" y="31"/><use href="#pt" x="932" y="46"/><use href="#pt" x="937" y="80"/><use href="#pt" x="940" y="107"/><use href="#pt" x="942" y="136"/><use href="#pt" x="955" y="-4"/><use href="#pt" x="965" y="25"/><use href="#pt" x="956" y="54"/><use href="#pt" x="960" y="79"/><use href="#pt" x="961" y="104"/><use href="#pt" x="991" y="5"/><use href="#pt" x="983" y="24"/></g><g class="m-tuft"><use href="#ph" x="363" y="235"/><use href="#ph" x="366" y="259"/><use href="#ph" x="384" y="267"/><use href="#ph" x="389" y="290"/><use href="#ph" x="397" y="313"/><use href="#ph" x="394" y="337"/><use href="#ph" x="410" y="186"/><use href="#ph" x="417" y="214"/><use href="#ph" x="412" y="236"/><use href="#ph" x="418" y="264"/><use href="#ph" x="413" y="283"/><use href="#ph" x="421" y="316"/><use href="#ph" x="409" y="343"/><use href="#ph" x="437" y="175"/><use href="#ph" x="445" y="210"/><use href="#ph" x="445" y="228"/><use href="#ph" x="448" y="318"/><use href="#ph" x="438" y="333"/><use href="#ph" x="462" y="186"/><use href="#ph" x="472" y="210"/><use href="#ph" x="462" y="265"/><use href="#ph" x="464" y="337"/><use href="#ph" x="497" y="188"/><use href="#ph" x="495" y="211"/><use href="#ph" x="497" y="288"/><use href="#ph" x="491" y="314"/><use href="#ph" x="493" y="342"/><use href="#ph" x="520" y="235"/><use href="#ph" x="526" y="258"/><use href="#ph" x="524" y="290"/><use href="#ph" x="517" y="313"/></g><path class="m-water m-stour" d="M-36 585C-13 595 61 641 100 647C139 654 162 621 196 625C230 628 271 656 304 670C336 684 363 697 393 710C423 722 452 730 482 744C512 757 539 780 571 789C604 799 643 792 679 801C714 809 750 824 786 840C821 856 875 888 893 897"/><path class="m-water" d="M511 -28C517 -1 532 86 550 136C568 186 603 231 621 273C640 314 649 348 661 386C673 424 679 460 693 500C707 539 725 585 743 625C761 664 785 702 800 738C815 774 824 816 836 840C847 865 863 878 868 886"/><path class="m-water m-thin" d="M161 -28C162 14 168 151 171 227C174 303 174 360 179 426C183 492 193 591 196 625"/><path class="m-road" d="M557 397C562 374 580 301 586 255C591 210 586 172 589 125C593 78 604 -3 607 -28"/><path class="m-road" d="M543 483C545 468 555 412 557 397"/><path class="m-road" d="M511 551C518 563 540 599 557 625C574 650 590 676 611 704C631 732 667 780 679 795"/><path class="m-road" d="M429 568C442 565 492 565 511 551C530 537 538 494 543 483"/><path class="m-road" d="M196 568C208 555 235 503 268 494C301 484 352 502 393 511C433 520 491 544 511 551"/><path class="m-road" d="M161 670C152 679 128 696 107 727C86 757 57 817 36 852C15 887 -9 923 -18 937"/><path class="m-road" d="M611 704C628 702 679 692 714 693C749 694 768 704 821 710C875 715 1000 724 1036 727"/><path class="m-a-case" d="M-36 613C-3 623 104 671 161 670C217 669 259 625 304 607C348 590 389 589 429 568C468 547 501 507 543 483C585 458 638 444 679 420C719 396 750 361 786 341C821 321 851 310 893 301C935 291 1012 287 1036 284"/><path class="m-a" d="M-36 613C-3 623 104 671 161 670C217 669 259 625 304 607C348 590 389 589 429 568C468 547 501 507 543 483C585 458 638 444 679 420C719 396 750 361 786 341C821 321 851 310 893 301C935 291 1012 287 1036 284"/>
+<path class="m-water m-stour" d="M1010 205C984 290 968 395 940 510C924 575 906 626 888 668"/>
+<path class="m-patch" pathLength="100" d="M520 300C528 280 543 269 565 258C587 247 614 239 650 236C686 233 738 243 780 242C822 241 866 230 900 232C934 234 967 236 982 252C997 268 992 300 992 330C992 360 993 398 984 430C975 462 961 496 940 520C919 544 892 560 860 574C828 588 787 602 750 606C713 610 671 608 640 598C609 588 582 567 562 546C542 525 530 498 522 470C514 442 514 408 514 380C514 352 512 320 520 300Z"/>
+<path id="lbl-moors" d="M630 284C638 318 649 352 660 388" fill="none"/>
+<path id="lbl-avon" d="M976 372C969 410 962 446 953 488" fill="none"/>
+<text class="m-wname m-small"><textPath href="#lbl-moors">Moors River</textPath></text>
+<text class="m-wname m-small"><textPath href="#lbl-avon">River Avon</textPath></text>
+<text class="m-area" x="716" y="278">Moors Valley</text>
+<g transform="translate(582 441)"><rect class="m-shield" width="44" height="26"/><text class="m-shield-t" x="22" y="19">A31</text></g>
+<rect class="m-panel" x="480" y="418" width="173" height="228"/>
+<rect class="m-panel" x="653" y="190" width="173" height="228"/>
+<rect class="m-panel" x="827" y="418" width="173" height="228"/>
+<path class="m-fold" d="M653 190V647"/><path class="m-fold-l" d="M655 190V647"/>
+<path class="m-fold" d="M827 190V647"/><path class="m-fold-l" d="M829 190V647"/>
+<path class="m-fold" d="M480 418H1000"/><path class="m-fold-l" d="M480 420H1000"/>
+<path class="m-tick" d="M500 190V206M500 647V631M600 190V206M600 647V631M700 190V206M700 647V631M800 190V206M800 647V631M900 190V206M900 647V631M480 280H496M1000 280H984M480 380H496M1000 380H984M480 480H496M1000 480H984M480 580H496M1000 580H984"/>
+<text class="m-mar" x="506" y="218">A</text>
+<text class="m-mar" x="606" y="218">B</text>
+<text class="m-mar" x="706" y="218">C</text>
+<text class="m-mar" x="806" y="218">D</text>
+<text class="m-mar" x="906" y="218">E</text>
+<text class="m-mar" x="502" y="274">1</text>
+<text class="m-mar" x="502" y="374">2</text>
+<text class="m-mar" x="502" y="474">3</text>
+<text class="m-mar" x="502" y="574">4</text>
+<g transform="translate(506 600) scale(.75)"><path class="m-north" d="M0-30 11 12 0 5-11 12Z"/><text class="m-mar m-n" x="0" y="34">N</text></g></g></svg>
+    <button type="button" class="pin" style="left:14.8%;top:45.3%" data-place="p-westmoors" aria-pressed="false"><i></i><span>West Moors</span></button>
+    <button type="button" class="pin" style="left:47.7%;top:57.3%" data-place="p-stleonards" aria-pressed="false"><i></i><span>St Leonards</span></button>
+    <button type="button" class="pin lft" style="left:90.4%;top:31.9%" data-place="p-ringwood" aria-pressed="false"><i></i><span>Ringwood</span></button>
+    <button type="button" class="pin job lft" style="left:58.7%;top:39.4%" data-place="p-stives" aria-pressed="false"><i></i><span>St Ives</span></button>
+    <button type="button" class="pin job lft" style="left:71.5%;top:23.2%" data-place="p-ashley" aria-pressed="false"><i></i><span>Ashley Heath</span></button>
+    <button type="button" class="pin job" style="left:20.0%;top:70.9%" data-place="p-ferndown" aria-pressed="false"><i></i><span>Ferndown</span></button>
+    <button type="button" class="pin out" style="left:74.2%;top:91.9%" data-place="p-christchurch" aria-pressed="false"><i></i><span>Christchurch: ask us</span></button>
+    </div>
+    <p class="note"><span class="lg"><i class="r"></i>Sample review</span> <span class="lg"><i></i>Sample job</span> <span class="sk">Sketch map, not to scale</span></p></div>
+  <div class="places" aria-live="polite">
+    <article class="place" id="p-stleonards">
+      <h3>St Leonards</h3>
+      <svg class="stars" role="img" aria-label="5 out of 5 stars" viewBox="0 0 92 17"><use href="#st"/><use href="#st" x="19"/><use href="#st" x="38"/><use href="#st" x="57"/><use href="#st" x="76"/></svg>
+      <blockquote>Our old fuse box was swapped in a morning. Tidy, explained everything, and the certificate was in my inbox that afternoon.</blockquote>
+      <p class="who"><b>Gill, St Leonards</b><span class="tag">Sample review</span></p>
+    </article>
+    <article class="place" id="p-westmoors">
+      <h3>West Moors</h3>
+      <svg class="stars" role="img" aria-label="5 out of 5 stars" viewBox="0 0 92 17"><use href="#st"/><use href="#st" x="19"/><use href="#st" x="38"/><use href="#st" x="57"/><use href="#st" x="76"/></svg>
+      <blockquote>Booked an electrical safety report for our rental. Clear write-up, no scare tactics, and they only flagged what really mattered.</blockquote>
+      <p class="who"><b>Chris, West Moors</b><span class="tag">Sample review</span></p>
+    </article>
+    <article class="place" id="p-ringwood">
+      <h3>Ringwood</h3>
+      <svg class="stars" role="img" aria-label="5 out of 5 stars" viewBox="0 0 92 17"><use href="#st"/><use href="#st" x="19"/><use href="#st" x="38"/><use href="#st" x="57"/><use href="#st" x="76"/></svg>
+      <blockquote>Charger on the front of the house in half a day, and they set it to charge overnight on the cheap rate. Very happy.</blockquote>
+      <p class="who"><b>Helen, Ringwood</b><span class="tag">Sample review</span></p>
+    </article>
+    <article class="place" id="p-stives">
+      <h3>St Ives</h3>
+      <p>Wall-mounted car charger on a brick-fronted house, cable tidied down the wall. Done in one visit.</p>
+      <p class="who"><b>EV charger supply and fit, from £850</b><span class="tag">Sample job</span></p>
+    </article>
+    <article class="place" id="p-ashley">
+      <h3>Ashley Heath</h3>
+      <p>Wooden-backed fuse box in the stair cupboard replaced with a modern consumer unit, tested and certificated.</p>
+      <p class="who"><b>Consumer unit upgrade, from £450</b><span class="tag">Sample job</span></p>
+    </article>
+    <article class="place" id="p-ferndown">
+      <h3>Ferndown</h3>
+      <p>Landlord safety inspection on a two-bed flat, with a clear report and any repairs quoted separately.</p>
+      <p class="who"><b>EICR for landlords, from £150</b><span class="tag">Sample job</span></p>
+    </article>
+    <article class="place" id="p-christchurch">
+      <h3>Christchurch</h3>
+      <p>Just outside our usual patch, down the Avon. Ring and ask, and we'll tell you straight if we can get to you.</p>
+    </article>
+  </div>
+</section>
+
+<div class="join" aria-hidden="true"><div class="bars"></div></div>
+<section class="prices" id="prices" aria-labelledby="pr-h">
+  <figure><img src="assets/ev-charger.webp" width="1400" height="788" loading="lazy" alt="A wall-mounted electric car charger with its cable coiled on a hook, on the brick front of a house, with a car parked beside it."><figcaption>Illustrative photos</figcaption></figure>
+  <div class="key wrap">
+    <div class="key-head">
+      <h2 id="pr-h">Rough prices, before anyone visits</h2>
+      <p class="lede">Clear starting prices, so you know roughly where you stand. Every job then gets a fixed written quote.</p>
+    </div>
+    <ul>
+      <li><div class="line"><h3>EICR / landlord electrical safety certificate</h3><i></i><span>from<b>£150</b></span></div><p>A full inspection and written report, with any faults coded clearly so you know what is urgent.</p></li>
+      <li><div class="line"><h3>Fault finding and repairs</h3><i></i><span>from<b>£80</b></span></div><p>Tripping circuits, dead sockets, lights that flicker. We find it, fix it, and test it.</p></li>
+      <li><div class="line"><h3>Consumer unit (fuse board) upgrade</h3><i></i><span>from<b>£450</b></span></div><p>New board with RCBO protection, fitted, tested and certificated.</p></li>
+      <li><div class="line"><h3>EV charger supply and fit</h3><i></i><span>from<b>£850</b></span></div><p>Home charger fitted on the wall or post, with the supply and the paperwork done properly.</p></li>
+      <li><div class="line"><h3>Full or partial rewire</h3><i></i><span>from<b>£3,500</b></span></div><p>Room by room or the whole house, with dust sheets down and the decorating left tidy.</p></li>
+      <li><div class="line"><h3>Lighting, sockets, outdoor power and smoke alarms</h3><i></i><span>from<b>£90</b></span></div><p>Extra sockets, garden lighting, outdoor points and interlinked smoke alarms.</p></li>
+    </ul>
+    <small class="pnote">Prices are examples for this demo site.</small>
+  </div>
+</section>
+
+<section class="work" id="work" aria-labelledby="wk-h">
+  <div class="ba" id="ba" style="--pos:50%">
+    <img src="assets/fusebox-before.webp" width="1200" height="900" loading="lazy" alt="Before: an old fuse box with black and white rewirable fuse carriers, mounted on a dusty wooden board in a loft stair space.">
+    <img class="after" src="assets/consumerunit-after.webp" width="1200" height="900" loading="lazy" alt="After: a white modern consumer unit with a row of black switches and a red main switch, on the same wooden board with neat grey cables.">
+    <span class="lab lb">Before</span><span class="lab la">After</span><span class="cap">Illustrative photos</span>
+    <input type="range" min="0" max="100" value="50" id="ba-range" aria-label="Compare the fuse board. Move left to see more of the new consumer unit, right to see more of the old fuse box.">
+    <div class="bar" aria-hidden="true"><div class="grip"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"><path d="M10 8 4 14l6 6M18 8l6 6-6 6"/></svg></div></div>
+  </div>
+  <div class="work-copy">
+    <h2 id="wk-h">Wooden-backed fuse box out. Modern consumer unit in.</h2>
+    <p class="lede">An old rewirable fuse box in an Ashley Heath stair cupboard, replaced with a new consumer unit with RCBOs. Drag the slider to compare. Illustrative photos.</p>
+    <dl class="facts">
+      <div><dt>One morning</dt><dd>Power off for a few hours</dd></div>
+      <div><dt>RCBO protection</dt><dd>Each circuit protected on its own</dd></div>
+      <div><dt>Tested and certificated</dt><dd>Paperwork handed over</dd></div>
+      <div><dt>Tidy site</dt><dd>Dust sheets and a clean-up</dd></div>
+    </dl>
+  </div>
+</section>
+
+<div class="join" aria-hidden="true"><div class="bars"></div></div>
+<section class="band" aria-labelledby="qt-h"><div class="wrap">
+  <div>
+    <h2 id="qt-h">Tell us the job. We quote in writing.</h2>
+    <p class="pl">Call, WhatsApp or use this form. A photo of your fuse board helps. We visit or quote from photos, test everything before we leave, and give you the certificate paperwork at the end.</p>
+  </div>
+  <form id="quote" novalidate aria-labelledby="qt-h">
+    <fieldset>
+      <legend>What's the job?</legend>
+      <div class="opts">
+        <input type="radio" name="job" id="j1" value="Fault or repair" checked><label for="j1">Fault</label>
+        <input type="radio" name="job" id="j2" value="Fuse board upgrade"><label for="j2">Fuse board</label>
+        <input type="radio" name="job" id="j3" value="Landlord safety report (EICR)"><label for="j3">EICR</label>
+        <input type="radio" name="job" id="j4" value="EV charger"><label for="j4">EV charger</label>
+        <input type="radio" name="job" id="j5" value="Something else"><label for="j5">Other</label>
+      </div>
+    </fieldset>
+    <div><label class="f" for="qd">A few details</label><textarea id="qd" aria-describedby="qs" placeholder="For example: kitchen sockets keep tripping the fuse board"></textarea></div>
+    <div><label class="f" for="qp">Postcode</label><input class="t" id="qp" autocomplete="postal-code" placeholder="BH24"></div>
+    <button class="send" type="submit">Write my WhatsApp message</button>
+    <p class="composed" id="qs" role="status" aria-live="polite"></p>
+  </form>
+</div></section>
+
+<div class="join" aria-hidden="true"><div class="bars"></div></div>
+<section class="ask wrap" id="faq" aria-labelledby="fq-h">
+  <h2 id="fq-h">What people ask on the phone</h2>
+  <div>
+    <details open><summary>How often do landlords need an EICR?</summary><p>Landlords of privately rented homes in England need an electrical safety report at least every five years, and sooner if the last report says so. We'll send a reminder when yours is due.</p></details>
+    <details><summary>Do I need a new fuse board?</summary><p>Not always. Old rewirable fuses, a cracked casing or no RCD protection are strong signs. We test first and tell you straight whether it needs replacing.</p></details>
+    <details><summary>How long does an EV charger install take?</summary><p>Most home installs take half a day to a day. It takes longer if the consumer unit needs upgrading or the cable run is long.</p></details>
+    <details><summary>Do you give a certificate?</summary><p>Yes. On a real site, this answer shows the firm's scheme details so customers can check them. This firm is made up, so it says NICEIC approved contractor (example).</p></details>
+    <details><summary>Do you charge a call-out fee?</summary><p>No call-out fee for quotes within our area. Fault finding is charged from the price agreed on the phone.</p></details>
+  </div>
+</section>
+</main>
+
+<section class="close" id="want" aria-labelledby="wt-h"><div class="wrap">
+  <div>
+    <h2 id="wt-h">Like this site? Get one for your business</h2>
+  </div>
+  <div style="display:grid;gap:.9rem">
+    <p>This is an example built by Tom Fisher in St Leonards. One-page websites for local trades: built from your own reviews and photos, with a map of your own patch, hosted and kept up to date for you.</p>
+    <p class="price">£199 to build, then £10 a month</p>
+    <div class="reach">
+      <span>Call or WhatsApp Tom on <a href="tel:+447825630833">07825 630833</a></span>
+      <span><a href="mailto:tom.fisher.systems@gmail.com">tom.fisher.systems@gmail.com</a></span>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <span>Sparrowhawk Electrical is a fictional business on a demo website.</span>
+  <span>Demo by Tom Fisher, St Leonards, Dorset.</span>
+</div></footer>
+
+<aside class="callbar" aria-label="Quick contact">
+  <a href="#quote" data-demo="call">Call</a>
+  <a href="#quote" data-demo="whatsapp">WhatsApp</a>
+</aside>
+<aside aria-label="Demo notices"><p class="demo-note" id="note" role="status" aria-live="polite"></p></aside>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="st" viewBox="0 0 16 17" width="16" height="17"><path fill="currentColor" d="M8 .8l2.3 5.1 5.5.6-4.1 3.7 1.2 5.5L8 13l-4.9 2.7 1.2-5.5L.2 6.5l5.5-.6z"/></symbol></svg>
+
+<script>
+(function(){
+  var note=document.getElementById('note'),t;
+  var msg={call:'Demo only. On a real site this rings the firm straight away. 01425 000000 is a placeholder.',whatsapp:'Demo only. On a real site this opens WhatsApp with the firm. Nothing is sent from here.'};
+  document.querySelectorAll('[data-demo]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      note.textContent=msg[a.getAttribute('data-demo')];
+      clearTimeout(t);t=setTimeout(function(){note.textContent='';},5000);
+    });
+  });
+
+  var pins=[].slice.call(document.querySelectorAll('.pin')),places=[].slice.call(document.querySelectorAll('.place'));
+  function show(id){
+    places.forEach(function(p){p.hidden=p.id!==id;});
+    pins.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-place')===id?'true':'false');});
+  }
+  pins.forEach(function(b){b.addEventListener('click',function(){show(b.getAttribute('data-place'));});});
+  show('p-stleonards');
+
+  var map=document.getElementById('map');
+  if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
+    var io=new IntersectionObserver(function(es){
+      if(es[0].isIntersecting){map.classList.add('draw');io.disconnect();}
+    },{threshold:.35});
+    io.observe(map);
+  }
+
+  var ba=document.getElementById('ba'),r=document.getElementById('ba-range');
+  function setPos(v){v=Math.max(0,Math.min(100,v));r.value=v;ba.style.setProperty('--pos',v+'%');}
+  r.addEventListener('input',function(){setPos(+r.value);});
+  var drag=false;
+  function fromEvent(e){var b=ba.getBoundingClientRect();setPos((e.clientX-b.left)/b.width*100);}
+  ba.addEventListener('pointerdown',function(e){drag=true;fromEvent(e);});
+  window.addEventListener('pointermove',function(e){if(drag)fromEvent(e);});
+  window.addEventListener('pointerup',function(){drag=false;});
+  window.addEventListener('pointercancel',function(){drag=false;});
+
+  var f=document.getElementById('quote'),s=document.getElementById('qs'),d=document.getElementById('qd'),pc=document.getElementById('qp');
+  d.addEventListener('input',function(){if(d.value.trim())d.removeAttribute('aria-invalid');});
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var txt=d.value.trim();
+    s.textContent='';
+    if(!txt){d.setAttribute('aria-invalid','true');s.textContent='Add a few details about the job first, so the firm knows what to bring.';d.focus();return;}
+    d.removeAttribute('aria-invalid');
+    var job=f.querySelector('input[name=job]:checked').value,post=pc.value.trim();
+    s.appendChild(document.createTextNode('Nothing has been sent. On a real site, this opens WhatsApp with:'));
+    var q=document.createElement('q');q.textContent=job+': '+txt+(post?' ('+post+')':'');s.appendChild(q);
+  });
+})();
+</script>
+</body>
+</html>
